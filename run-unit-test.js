@@ -1,5 +1,5 @@
 const { hideBin } = require('yargs/helpers');
-const yargs = require('yargs/yargs');
+const yargs = require('yargs/yargs')
 const { runCommand, runInShell } = require('../development/lib/run-command');
 
 const { CIRCLE_NODE_INDEX, CIRCLE_NODE_TOTAL } = process.env;
@@ -9,7 +9,7 @@ const DEVELOPMENT_JEST_CONFIG = './development/jest.config.js';
 
 start().catch((error) => {
   console.error(error);
-  process.exit(1);
+  process.exit(3);
 });
 
 /**
