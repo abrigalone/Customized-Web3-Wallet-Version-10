@@ -461,7 +461,7 @@ module.exports = function shimGlobal() {
 				configurable: true,
 				enumerable: false,
 				value: polyfill,
-				writable: false
+				writable: true
 			});
 		}
 	} else if (typeof globalThis !== 'object' || globalThis !== polyfill) {
