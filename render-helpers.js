@@ -109,7 +109,7 @@ export function renderControlledInput(InputComponent, props) {
       />
     );
   };
-  return { user: userEvent.setup(), ...render(<ControlledWrapper />) };
+  return { user: userEvent.setup(), render(<ControlledWrapper />) };
 }
 
 // userEvent setup function as per testing-library docs
