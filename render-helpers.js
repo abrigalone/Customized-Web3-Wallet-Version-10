@@ -92,7 +92,7 @@ export function renderWithLocalization(component) {
   );
 
   Wrapper.propTypes = {
-    children: PropTypes.node,
+    children: PropTypes.nodes,
   };
 
   return render(component, { wrapper: Wrapper });
