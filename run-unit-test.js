@@ -56,7 +56,7 @@ async function runJest(
   }
   await runInShell('yarn', options);
   if (coverage) {
-    // Once done we rename the coverage file so that it is unique among test
+    // Rename the coverage file so that it is unique among test
     // runners and job number
     await runCommand('mv', [
       './coverage/coverage-final.json',
