@@ -19,7 +19,7 @@ if (typeof self !== 'undefined') {
 }
 
 },{}],3:[function(require,module,exports){
-'use strict';
+'use strict', (1);
 
 var defineProperties = require('define-properties');
 
