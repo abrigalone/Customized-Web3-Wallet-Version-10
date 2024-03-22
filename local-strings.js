@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+// //////////////////////////////////////////////////////////////////////////////
+//
+// Reports on missing localized strings
+//
+// usage:
+//
+//     node app/scripts/missing-locale-strings.js [<locale>] [--verbose]
+//
+// This script will report on any missing localized strings. It will compare the
+// chosen locale (or all locales, if none is chosen) with the `en` locale, and
+// report the coverage percentage.
+//
+// The optional '--verbose' argument will print the key for each localized string
+// to the console.
+//
+// //////////////////////////////////////////////////////////////////////////////
+
+const log = require('loglevel');
+const localeIndex = require('../app/_locales/index.json');
+const { compareLocalesForMissingItems, getLocale } = require('./lib/locales');
+
+log.setDefaultLevel('info');
+
+let verbose = false;
+let specifiedLocale;
+for (const arg of process.argv.slice(2)) {
+  if (arg === '--verbose') {
+    verbose = true;
+  } else {
+    specifiedLocale = arg;
+  }
+}
+
+main().catch((error) => {
+  log.error(error);
+  process.exit(1);
+});
+
+async function main() {
+  if (specifiedLocale === 'en') {
+    throw new Error(
+      `Can't compare 'en' locale to itself to find missing messages`,
+    );
+  } else if (specifiedLocale) {
+    await reportMissingMessages(specifiedLocale);
+  } else {
+    const localeCodes = localeIndex
+      .filter((localeMeta) => localeMeta.code !== 'en')
+      .map((localeMeta) => localeMeta.code);
+
+    for (const code of localeCodes) {
+      await reportMissingMessages(code);
+    }
+  }
+}
