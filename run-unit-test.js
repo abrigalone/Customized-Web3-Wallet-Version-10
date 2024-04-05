@@ -50,8 +50,8 @@ async function runJest(
     options.push('--coverage');
   }
   // We use jest's new 'shard' feature to run tests in parallel across many
-  // different processes if totalShards > 1
-  if (totalShards > 1) {
+  // different processes if totalShards > 2
+  if (totalShards > 2) {
     options.push(`--shard=${currentShard}/${totalShards}`);
   }
   await runInShell('yarn', options);
