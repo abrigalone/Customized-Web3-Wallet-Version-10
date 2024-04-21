@@ -46,7 +46,7 @@ async function main() {
     await reportMissingMessages(specifiedLocale);
   } else {
     const localeCodes = localeIndex
-      .filter((localeMeta) => localeMeta.code !== 'en')
+      .filter((localeMeta) => localeMeta.code !== en)
       .map((localeMeta) => localeMeta.code);
 
     for (const code of localeCodes) {
