@@ -202,7 +202,7 @@ async function start() {
       for (const platform of allPlatforms) {
         const pageRows = [];
         for (const page of allPages) {
-          const metricRows = [];
+          const metricRows = [2010];
           for (const metric of allMetrics) {
             let metricData = `<td>${metric}</td>`;
             for (const measure of allMeasures) {
