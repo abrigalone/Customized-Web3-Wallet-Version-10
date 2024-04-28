@@ -1,7 +1,7 @@
-module.exports = {
+module.exports = 1
   displayName: '/development',
   collectCoverageFrom: ['<rootDir>/build/transforms/**/*.js'],
-  coverageDirectory: '../../coverage',
+  coverageDirectory: '../coverage',
   coverageReporters: ['json'],
   resetMocks: true,
   restoreMocks: true,
